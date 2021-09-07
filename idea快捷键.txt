@@ -1,0 +1,17 @@
+         //IO流会占用资源,注意关闭
+        //数字.for  快速生成for循环,或者fori 快速生成for循环
+        //psvm快速生成主函数
+        //sout快速生成输出语句
+        //alt+insert(ins) 然后选择Constructor快速生成构造方法
+        //alt+insert(ins) 然后选择Getter and setter快速生成私有属性的get/set方法对
+        //alt+insert(ins) 然后选择Override快速对父类进行方法重写
+        //Ctrl+H 可以显示类间的继承层次关系
+        //选中特定的语句,Ctrl+Alt+T,快速选择包围语句的常用代码块如try/catch
+        //java可以导入特定类的特定方法如Math类的random()方法,不过import后要加static,这称为静态             导入包,即import static java.lang.Math.random;(达到简化写法的目的)
+      //Ctrl+W 可以写完一行代码后快速选中一行
+     //Ctrl+Alt+V 快捷键可以对该行快速根据变量类型自动生成变量
+    //Shift+Enter光标移动到下一行开头
+    //Ctrl+F10可以快速更改Tomcat的更新方式(eg: update classes and resources )
+    //代码整体向后缩进：选中多行代码 - 按下tab键
+  // 代码整体向前缩进:选中多行代码 - 按下shift + tab键
+    //Alt+Enter可以快速修复错误

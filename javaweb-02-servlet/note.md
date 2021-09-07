@@ -1,0 +1,13 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+  
+  <!--    web.xml中是配置我们web应用的核心配置-->
+  <!--替换为webapp4.0版本和tomcat一致-->
+  <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                        http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+           version="4.0"
+           metadata-complete="true">
+  </web-app>
+```

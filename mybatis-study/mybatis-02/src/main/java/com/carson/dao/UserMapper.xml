@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要绑定一个对应的Dao/Mapper接口  路径写全-->
+<mapper namespace="com.carson.dao.UserMapper">
+    <!--select标签对应select查询语句-->
+    <!--id对应要实现的接口的方法的名字,resultType对应返回类型且路径要写全-->
+    <select id="getUserList" resultType="user">
+    select * from mybatis.user;
+  </select>
+    <!--select查询语句 #{变量名}形式去填写sql语句的参数-->
+    <select id="getUserById" parameterType="int" resultType="com.carson.pojo.User">
+        select * from user where id = #{id};
+    </select>
+
+    <!--insert语句 对应 insert标签-->
+    <!--对象中的属性,可以直接取出来-->
+    <insert id="addUser" parameterType="com.carson.pojo.User">
+        insert into user values(#{id},#{name},#{pwd});
+    </insert>
+
+    <!--update语句 对应 update标签-->
+    <!--对象中的属性,可以直接取出来-->
+    <update id="updateUser" parameterType="com.carson.pojo.User">
+        update user set name=#{name},pwd=#{pwd} where id=#{id};
+    </update>
+
+    <!--delete语句 对应 delete标签-->
+    <delete id="delUser" parameterType="int">
+        delete from user where id = #{id};
+    </delete>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.carson.dao.UserMapper">
+    <!--结果集映射 id:标识名 type:需要映射的pojo-->
+    <resultMap id="userMap" type="User">
+        <!--column:数据库中的字段 property:实体类中的属性-->
+        <!--不需要进行结果字段映射的字段不需要写result标签进行映射-->
+        <result column="pwd" property="password"></result>
+    </resultMap>
+    <!--根据用户Id查询用户-->
+    <select id="getUserById" parameterType="int" resultMap="userMap">
+        select * from user where id = #{id};
+    </select>
+    <!--limit实现分页-->
+    <select id="getUserByLimit" parameterType="map" resultMap="userMap">
+        select * from user limit #{startIndex},#{pageSize};
+    </select>
+    <!--RowBounds实现分页-->
+    <select id="getUserByRowBounds" resultMap="userMap">
+        select * from user;
+    </select>
+
+</mapper>

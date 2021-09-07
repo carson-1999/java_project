@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace标明实现的接口-->
+<mapper namespace="com.carson.dao.StudentMapper">
+    <!--按照结果嵌套查询-->
+    <select id="getStudents2" resultMap="StudentMap2">
+        select s.id sid,s.name sname,t.name tname from student s,teacher t where s.tid = t.id
+    </select>
+    <resultMap id="StudentMap2" type="Student">
+        <result property="name" column="sname" />
+        <result property="id" column="sid"/>
+    <!--复杂对象单独处理,对象:association 集合:collection-->
+        <association property="teacher" javaType="Teacher">
+            <result property="name" column="tname"/>
+        </association>
+    </resultMap>
+
+    <!-- =====================================================-->
+    <!--查询所有学生的信息及相应的老师信息
+    思路:(SQL嵌套查询的思路)书写三个标签
+        1 查询所有学生的信息
+        2 根据查询出来的学生tid信息,查询对应的老师信息-->
+    <select id="getStudents" resultMap="StudentMap">
+        select * from student
+    </select>
+    <resultMap id="StudentMap" type="Student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <!--复杂的属性,我们需要单独处理
+        对象: association  集合: collection
+        这里javaType指明对象的类型, select属性相当于嵌套了一个查询语句
+        -->
+        <association property="teacher" column="tid" javaType="Teacher" select="getTeachers" />
+    </resultMap>
+
+    <select id="getTeachers" resultType="Teacher">
+        select * from teacher
+    </select>
+
+</mapper>

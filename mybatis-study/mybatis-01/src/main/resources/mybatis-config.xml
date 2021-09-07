@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--configuration核心配置文件-->
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/><!--事务管理是JDBC-->
+            <dataSource type="POOLED">
+                <!--更换连接数据库的各个属性值-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <!--注:这里的&连接符要用&amp;进行表示，&amp; 是 HTML 中 & 的表示方法-->
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--每一个Mapper.xml都需要在mybatis的核心配置文件中注册-->
+    <mappers>
+        <!--路径要用/进行分割-->
+        <mapper resource="com/carson/dao/UserMapper.xml"/>
+    </mappers>
+</configuration>
